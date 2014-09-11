@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.org/PolygonRegion/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="PolygonRegion" targetNamespace="http://www.example.org/PolygonRegion/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.example.org/PolygonRegion/">
+      <xsd:element name="PointInPolygon">
+      
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="vehicleId" type="xsd:int" />
+          	<xsd:element name="lat" type="xsd:double"></xsd:element>
+          	<xsd:element name="lan" type="xsd:double"></xsd:element>
+          	<xsd:element name="packetTime" type="xsd:dateTime"></xsd:element>
+          	
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="PointInPolygonResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:boolean"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="WhetherInterested">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="vehicleId" type="xsd:int" />
+          	<xsd:element name="lat" type="xsd:double"></xsd:element>
+          	<xsd:element name="lan" type="xsd:double"></xsd:element>
+          	<xsd:element name="packetTime" type="xsd:dateTime"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="WhetherInterestedResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:boolean"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="MobileAlertMessage">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="url" type="xsd:string"></xsd:element>
+      			<xsd:element name="queryString" type="xsd:string"></xsd:element>
+      			<xsd:element name="proxy" type="xsd:string"></xsd:element>
+      			<xsd:element name="port" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="MobileAlertMessageResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="out" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+<!--      <xsd:element name="MobileAlert">-->
+<!--      	<xsd:complexType>-->
+<!--      		<xsd:sequence>-->
+<!---->
+<!--      			<xsd:element name="vehicleId" type="xsd:int"></xsd:element>-->
+<!--      			<xsd:element name="url" type="xsd:string"></xsd:element>-->
+<!--      			<xsd:element name="username" type="xsd:string"></xsd:element>-->
+<!--      			<xsd:element name="password" type="xsd:string"></xsd:element>-->
+<!--      			<xsd:element name="senderId" type="xsd:string"></xsd:element>-->
+<!--      			<xsd:element name="message" type="xsd:string"></xsd:element>-->
+<!--      			<xsd:element name="proxy" type="xsd:string"></xsd:element>-->
+<!--      			<xsd:element name="port" type="xsd:int"></xsd:element>-->
+<!--      		</xsd:sequence>-->
+<!--      	</xsd:complexType>-->
+<!--      </xsd:element>-->
+<!--      <xsd:element name="MobileAlertResponse">-->
+<!--      	<xsd:complexType>-->
+<!--      		<xsd:sequence>-->
+<!---->
+<!--      			<xsd:element name="out" type="xsd:int"></xsd:element>-->
+<!--      		</xsd:sequence>-->
+<!--      	</xsd:complexType>-->
+<!--      </xsd:element>-->
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="PointInPolygonRequest">
+    <wsdl:part element="tns:PointInPolygon" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="PointInPolygonResponse">
+    <wsdl:part element="tns:PointInPolygonResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="WhetherInterestedRequest">
+    <wsdl:part element="tns:WhetherInterested" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="WhetherInterestedResponse">
+    <wsdl:part element="tns:WhetherInterestedResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="MobileAlertMessageRequest">
+  	<wsdl:part name="parameters" element="tns:MobileAlertMessage"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MobileAlertMessageResponse">
+  	<wsdl:part name="parameters" element="tns:MobileAlertMessageResponse"></wsdl:part>
+  </wsdl:message>
+<!--  <wsdl:message name="MobileAlertRequest">-->
+<!--  	<wsdl:part name="parameters" element="tns:MobileAlert"></wsdl:part>-->
+<!--  </wsdl:message>-->
+<!--  <wsdl:message name="MobileAlertResponse">-->
+<!--  	<wsdl:part name="parameters" element="tns:MobileAlertResponse"></wsdl:part>-->
+<!--  </wsdl:message>-->
+  <wsdl:portType name="PolygonRegion">
+    <wsdl:operation name="PointInPolygon">
+      <wsdl:input message="tns:PointInPolygonRequest"/>
+      <wsdl:output message="tns:PointInPolygonResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="WhetherInterested">
+      <wsdl:input message="tns:WhetherInterestedRequest"/>
+      <wsdl:output message="tns:WhetherInterestedResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="MobileAlertMessage">
+    	<wsdl:input message="tns:MobileAlertMessageRequest"></wsdl:input>
+    	<wsdl:output message="tns:MobileAlertMessageResponse"></wsdl:output>
+    </wsdl:operation>
+<!--    <wsdl:operation name="MobileAlert">-->
+<!--    	<wsdl:input message="tns:MobileAlertRequest"></wsdl:input>-->
+<!--    	<wsdl:output message="tns:MobileAlertResponse"></wsdl:output>-->
+<!--    </wsdl:operation>-->
+</wsdl:portType>
+  <wsdl:binding name="PolygonRegionSOAP" type="tns:PolygonRegion">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="PointInPolygon">
+      <soap:operation soapAction="http://www.example.org/PolygonRegion/PointInPolygon"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      
+    </wsdl:operation>
+    
+    <wsdl:operation name="WhetherInterested">
+      <soap:operation soapAction="http://www.example.org/PolygonRegion/WhetherInterested"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      
+    </wsdl:operation>
+    <wsdl:operation name="MobileAlertMessage">
+      <soap:operation soapAction="http://www.example.org/PolygonRegion/MobileAlertMessage"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      
+    </wsdl:operation>
+<!--      <wsdl:operation name="MobileAlert">-->
+<!--      <soap:operation soapAction="http://www.example.org/PolygonRegion/MobileAlert"/>-->
+<!--      <wsdl:input>-->
+<!--        <soap:body use="literal"/>-->
+<!--      </wsdl:input>-->
+<!--      <wsdl:output>-->
+<!--        <soap:body use="literal"/>-->
+<!--      </wsdl:output>-->
+<!--      -->
+<!--    </wsdl:operation>-->
+<!--    -->
+  </wsdl:binding>
+  <wsdl:service name="PolygonRegion">
+    <wsdl:port binding="tns:PolygonRegionSOAP" name="PolygonRegionSOAP">
+      <soap:address location="http://192.168.2.2:8080/gpsws/PolygonRegionSOAP"/>
+<!--      <soap:address location="http://localhost:8084/gpsws/PolygonRegionSOAP"/>-->
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
